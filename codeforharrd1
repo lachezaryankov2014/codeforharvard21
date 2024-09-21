@@ -1,0 +1,22 @@
+#include <Servo.h>
+Servo myservo; // create servo object to control a servo
+
+const int buttonPin = 2; // the pin that the pushbutton is connected to
+const int servoPin = 9; // the pin that the servo is connected to
+
+void setup() {
+  myservo.attach(servoPin); // attaches the servo on pin 9 to the servo object
+  pinMode(buttonPin, INPUT); // initialize the pushbutton pin as an input
+  myservo.write(0); // sets the servo position to 0
+}
+
+void loop() {
+  int buttonState = digitalRead(buttonPin); // read the state of the pushbutton value
+  
+  if (buttonState == HIGH) {
+    // if the button is pressed, turn the servo
+    myservo.write(90); // sets the servo to middle position
+    delay(1000); // waits for a second
+    myservo.write(0); // sets the servo back to initial position
+   }
+}
